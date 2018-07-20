@@ -1,0 +1,740 @@
+    <!DOCTYPE html>
+    <html lang="ru-RU">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta property="og:url" content="">
+        <meta property="og:title" content="">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="">
+
+        <meta name="csrf-param" content="_csrf-frontend">
+    <meta name="csrf-token" content="7hOWEk5zlYpPKsgi54GEuOWoql62c3EbT-0V1-apekeWZLt8JCHZyS1ch3CI1sfnh5jtNtwSXCgWq22UkpwPIA==">
+        <title>
+            Лотерея        </title>
+        <link href="assets/b7291bbe/css/lottery.css" rel="stylesheet">
+<link href="css/font-awesome.min.css@v=1515009537" rel="stylesheet">
+<link href="assets/b7291bbe/css/jquery.mCustomScrollbar.css@v=1478939405" rel="stylesheet">
+<link href="assets/b7291bbe/css/styles.css@v=1532005911" rel="stylesheet">
+<script src="assets/15d928de/jquery.min.js@v=1490036520"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" crossorigin="anonymous" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs="></script>        <script src="assets/b7291bbe/js/jquery-ui.js"></script>
+        <script src="assets/b7291bbe/js/jquery.ui.touch-punch.min.js"></script>
+        <link rel="shortcut icon" href="assets/b7291bbe/img/design/lolfavicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+    
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105754020-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-105754020-1');
+</script>
+
+<script>
+    var socket = io.connect('188.225.72.203:8585', {secure: true});
+</script>
+
+<div class="wrap-withoutfoot">
+<header class="header">
+        <div class="header-wrapper"></div>
+<div class="container clear">
+    <div class="topline">
+        <button class="nav-trigger">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <a href="index.html" class="topline__logo">
+            <img class="topline__logo-big" src="assets/b7291bbe/img/design/logo.png" alt="">
+            <img class="topline__logo-small" src="assets/b7291bbe/img/design/logo-small.png" alt="">
+        </a>
+        <div class="topline__navigation">
+            <nav class="top-navigation">
+                <ul class="top-navigation__ul">
+                    <li>
+    <a href="lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+                </ul>
+            </nav>
+            <nav class="bottom-navigation">
+                <ul class="bottom-navigation__ul">
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#tryluck" class="bottom-navigation__link">
+                            <i class="icon icon-dice-wh bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Испытай удачу                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#minecraft" class="bottom-navigation__link">
+                            <i class="icon icon-creep bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Minecraft                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#catalog" class="bottom-navigation__link">
+                            <i class="icon icon-cube bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Каталог товаров                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button type="button" class="topline__close"></button>
+        </div>
+
+        <div class="topline__account">
+                            <div class="account-login">
+                    <a class="account-login__button" href="steam/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-steam-symbol account-login__icon"></i>
+                    </a>
+                    <a class="account-login__button" href="vk/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-vk account-login__icon"></i>
+                    </a>
+                </div>
+                    </div>
+    </div>
+</div>
+            <style>
+    header{
+        background: none;
+    }
+    .header-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: url(assets/b7291bbe/img/design/lottery-image.jpg) center bottom no-repeat;
+    }
+</style>
+
+
+<!-- победители ежедневной -->
+<div class="container lottery-box-js day">
+    <div class="lottery">
+        
+<div class="lottery-item">
+                    <div class="lottery-item-title">Вчера</div>
+        <a href="user@id=2107" class="lottery-item-figure">
+            <img src="https://pp.userapi.com/c834202/v834202075/13fa22/GEWwGWhCHIg.jpg?ava=1" alt="avatar" class="lottery-item-ava">
+        </a>
+        <div class="lottery-item-cap">
+            <div>Победитель: Даня</div>
+            <div>Приз: Minecraft + Полный доступ</div>
+        </div>
+    </div>
+
+<div class="lottery-item">
+                        <div class="lottery-item-title">Сегодня</div>
+            <div class="lottery-item-figure big"></div>
+            <div class="lottery-item-cap">
+                <div>Розыгрыш: 21:00</div>
+                <div>Приз: Ключ Terraria</div>
+            </div>
+            </div>
+
+<div class="lottery-item">
+            <div class="lottery-item-title">Завтра</div>
+        <div class="lottery-item-figure"></div>
+        <div class="lottery-item-cap">
+            <div>Розыгрыш: 21:00</div>
+            <div>Приз: Minecraft + Полный доступ</div>
+        </div>
+    </div>    </div>
+</div>
+<!-- победители еженедельной -->
+<div class="container hide lottery-box-js week">
+    <div class="lottery">
+        
+<div class="lottery-item">
+    </div>
+
+<div class="lottery-item">
+                        <div class="lottery-item-title">Текущая</div>
+            <div class="lottery-item-figure big"></div>
+            <div class="lottery-item-cap">
+                <div>Розыгрыш: 21.07.18, 22:00</div>
+                <div>Приз: Ключ CS:GO</div>
+            </div>
+            </div>
+
+<div class="lottery-item">
+            <div class="lottery-item-title">Следующая</div>
+        <div class="lottery-item-figure"></div>
+        <div class="lottery-item-cap">
+            <div>Розыгрыш: 28.07.18, 22:00</div>
+            <div>Приз:  Ключ PUBG</div>
+        </div>
+    </div>    </div>
+</div>
+
+<div class="lottery-tabs container">
+    <div class="lottery-tabs-btn active" data-id="day">Ежедневная лотерея</div>
+    <div class="lottery-tabs-btn" data-id="week">Еженедельная лотерея</div>
+    <div class="lottery-ball"></div>
+</div>
+
+</header>
+
+
+<div class="container">
+    <div class="lottery-info">
+        <div class="lottery-info-title">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <span>Выигрывай призы каждый день</span>
+        </div>
+        <div>Приобретая товары в магазине лололошки вы к каждой покупке получаете лотерейный билет, который участвует в ежедневной и еженедельной лотереях. Больше билетов - выше шанс выиграть дополнительный приз абсолютно бесплатно. Каждый билет - это целых два шанса выиграть супер приз: приз за день и суперприз за неделю. Топовые игры ждут своих победителей.
+            <div class="bold">Выдача призов производится путем обращения к нашим менеджерам в течение 24 часов с момента победы пользователя!</div>
+        </div>
+       <!-- <style>
+            .lottery-info-footer {
+                text-align: center;
+                padding: 15px 0 0;
+                border-top: 2px solid #3d3d3d;
+                margin: 15px 0 0;
+            }
+            .lottery-info-link {
+                color: #3d3d3d;
+                text-decoration: underline;
+                text-shadow: #ffffff 0 0 1px;
+                margin: 0 15px;
+                font-size: 20px;
+            }
+        </style>
+        <div class="lottery-info-footer">
+            <a href="/lottery-rules"  class="lottery-info-link">Правила</a>
+            <a href="/how-get-prize"  class="lottery-info-link">Как забрать приз</a>
+        </div>-->
+    </div>
+
+    <!--участники дня-->
+    <div class="lottery-win-list lottery-box-js day">
+        <div class="lottery-win-title">Участники ежедневной лотереи</div>
+        
+    <div class="lottery-win-row">
+        <a href="user@id=29074">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c847216/v847216405/3615/2n5YoR0A2cI.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Александр            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 5</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29075">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c847220/v847220531/90cdc/j2ytK2qKQtI.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Вадик Антонов            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29067">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/01754f113f5a264c794201ef130df9e4d5fa8c04_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                DrEaMeR            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28662">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c604622/v604622225/7f85/TEGiFzcWqW4.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Карим Юсупов            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29058">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c846019/v846019805/8bbcc/NIa5POCTcz4.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Даня Кот            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 2</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=22343">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c845216/v845216187/8e544/fdO_YnfV-Pg.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Данил Новоселов            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28693">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/31/31c28690074064e7ee0ce6697d079f0ed0deca45_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                Хороль            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=25754">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c834200/v834200358/11e555/C7PEhE_Dhps.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Михаил Шиндырей            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=14264">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c626931/v626931058/18ff3/JTecb_cO9_w.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Даниил            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28994">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c844521/v844521904/6b06a/3w0ZjZyheoE.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Колян            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29069">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://vk.com/images/camera_200.png?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Amur Ivanov            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28792">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                krek.den2005            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 1</div>
+    </div>
+
+    </div>
+
+    <!--участники недели-->
+    <div class="lottery-win-list hide lottery-box-js week">
+        <div class="lottery-win-title">Участники еженедельной лотереи</div>
+        
+    <div class="lottery-win-row">
+        <a href="user@id=28828">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c845217/v845217901/9d7a9/UnlG_aQNBvA.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Игорь            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 9</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=21155">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/88/88ced85168378dc219fab65c752e987c82e7570b_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                #WOKEN Brother            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 7</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28693">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/31/31c28690074064e7ee0ce6697d079f0ed0deca45_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                Хороль            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 6</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29074">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c847216/v847216405/3615/2n5YoR0A2cI.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Александр            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 5</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28953">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c847220/v847220505/80783/135QePh6xoY.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Данил Решетников            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 4</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28638">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c840428/v840428109/4ee97/Iwv7wVRVHno.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Денис Новиков            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 4</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=1346">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8d/8dbecd50283833eb84efd3cac76b3e068e66047a_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                Джозеф Джостар            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 4</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29075">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c847220/v847220531/90cdc/j2ytK2qKQtI.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Вадик Антонов            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29067">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/01754f113f5a264c794201ef130df9e4d5fa8c04_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                DrEaMeR            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28662">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://pp.userapi.com/c604622/v604622225/7f85/TEGiFzcWqW4.jpg?ava=1" alt="avatar" class="lottery-win-ava">
+                </div>
+                Карим Юсупов            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=29008">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f4b8c1b04f4cccee603d75ae39d4d8f9a3a54d5b_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                Я КАРТА            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+    <div class="lottery-win-row">
+        <a href="user@id=28974">
+            <div class="lottery-win-name" style="color: black">
+                <div class="lottery-win-figure">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e1/e1eec0e20b51611e6f357bcbfcf352c1f479ffcb_full.jpg" alt="avatar" class="lottery-win-ava">
+                </div>
+                Trouble_maker            </div>
+        </a>
+        <div class="lottery-win-prize">Лотерейных билетов: 3</div>
+    </div>
+
+    </div>
+
+</div>
+    </div>
+
+        <footer class="section">
+    <div class="container clear">
+        <div class="footer-logo">
+            <img src="assets/b7291bbe/img/design/logo.png" alt="">
+        </div>
+        <nav class="footer-col">
+            <ul class="footer-navigation">
+                <li>
+    <a href="lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+            </ul>
+            <div class="footer-copyright">
+                Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли. Все закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и марок, логотипы и товарные знаки являются собственностью соответствующих владельцев.            </div>
+        </nav>
+    </div>
+</footer>
+
+<!--<script>
+    $(document).on('input', '#input_add_balance', function () {
+        var inp = $(this), value = inp.val();
+        inp.val(value.replace(/[^\d,.]/g, '').replace(/([,.])[,.]+/g, '$1'));
+    });
+</script>
+-->
+<!-- modal -->
+<div class="popup-overlay" id="addMoneyModal">
+    <button class="close-bg modal__close"></button>
+    <div class="close-cross modal__close"></div>
+    <div class="modal payment-modal">
+        <div class="modal-inner">
+            <p class="payment-modal-title">Выберите удобный способ пополнения баланса</p>
+            <div class="clear">
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Электронные деньги:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMR" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMR">
+                            <span class="radio-payment-img wm"></span>
+                            <div class="radio-payment-text">
+                                <b>Webmoney</b>
+                                <span class="d">WMZ WMR WME</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="QSR" name="payment" value="all" data-pay-system="digi">
+                        <label for="QSR">
+                            <span class="radio-payment-img qiwi"></span>
+                            <div class="radio-payment-text">
+                                <b>Qiwi</b>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="PCR" name="payment" value="all" data-pay-system="digi">
+                        <label for="PCR">
+                            <span class="radio-payment-img yandex"></span>
+                            <div class="radio-payment-text">
+                                <b>Яндекс Деньги</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMX" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMX">
+                            <span class="radio-payment-img bitcoin"></span>
+                            <div class="radio-payment-text">
+                                <b>Bitcoin</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="150" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="150">
+                            <span class="radio-payment-img adv"></span>
+                            <div class="radio-payment-text">
+                                <b>AdvCash</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="114" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="114">
+                            <span class="radio-payment-img payeer"></span>
+                            <div class="radio-payment-text">
+                                <b>Payeer</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Банковские карты:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="liqp" name="payment" value="all" data-pay-system="liqpay">
+                        <label for="liqp">
+                            <span class="radio-payment-img liqpay"></span>
+                            <div class="radio-payment-text">
+                                <b>LiqPay</b>
+                                <span class="d">Приват 24</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="80" name="payment" value="all" data-pay-system="digi">
+                        <label for="80">
+                            <span class="radio-payment-img sber"></span>
+                            <div class="radio-payment-text">
+                                <b>Сбербанк</b>
+                                <span class="d">online</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="79" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="79">
+                            <span class="radio-payment-img alfa"></span>
+                            <div class="radio-payment-text">
+                                <b>Альфа Банк</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="94" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="94">
+                            <span class="radio-payment-img other"></span>
+                            <div class="radio-payment-text">
+                                <b>Другие банки</b>
+                                <span class="d">Россия, Украина</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Мобильные операторы:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MTS" name="payment" value="all" data-pay-system="digi">
+                        <label for="MTS">
+                            <span class="radio-payment-img mts"></span>
+                            <div class="radio-payment-text">
+                                <b>МТС</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="BLN" name="payment" value="all" data-pay-system="digi">
+                        <label for="BLN">
+                            <span class="radio-payment-img bee"></span>
+                            <div class="radio-payment-text">
+                                <b>Билайн</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MGY" name="payment" value="all" data-pay-system="digi">
+                        <label for="MGY">
+                            <span class="radio-payment-img megafon"></span>
+                            <div class="radio-payment-text">
+                                <b>Мегафон</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="TLY" name="payment" value="all" data-pay-system="digi">
+                        <label for="TLY">
+                            <span class="radio-payment-img tele2"></span>
+                            <div class="radio-payment-text">
+                                <b>Теле 2</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment-form">
+            <div class="payment-form-inner">
+                <div class="clear">
+                    <div class="payment-input-col">
+                        <input id="input_add_balance" name="amount" placeholder="Введите сумму" type="number">
+                        <input value="Оплатить" class="btn-red" id="pay" type="submit">
+                    </div>
+
+                    <label class="checkmark_block">
+                        <input name="agreement" id="check-pay" type="checkbox">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Cогласен c <a href="agreement" target="_blank">пользовательским соглашением</a> </span>
+                    </label>
+                </div>
+                <div id="pay-err"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal.end -->
+
+    <script src="assets/1d701b84/yii.js@v=1521657413"></script>
+<script src="js/underscore-min.js@v=1513606356"></script>
+<script src="js/jquery-ui.custom.min.js@v=1513606356"></script>
+<script src="js/jquery.mCustomScrollbar.min.js@v=1513606356"></script>
+<script src="js/jquery.cookie.js@v=1513606356"></script>
+<script src="js/clipboard.min.js@v=1513606356"></script>
+<script src="js/slick.min.js@v=1513606356"></script>
+<script src="assets/b7291bbe/js/jquery.mCustomScrollbar.js@v=1478939405"></script>
+<script src="assets/b7291bbe/js/common.js@v=1532008664"></script>
+<script src="assets/b7291bbe/js/my.js@v=1531132592"></script>    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function(){ var widget_id = '8hBERK6w7r';var d=document;var w=window;function l(){
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/geo-widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+    <!-- {/literal} END JIVOSITE CODE -->
+    </body>
+
+    </html>

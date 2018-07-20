@@ -1,0 +1,276 @@
+$(document).ready(function() {
+    var body = $('body');
+    var myVid1=document.getElementById('case_open_sound');
+    var myVid2=document.getElementById('case_scroll_sound');
+
+    //jQuery.scrollSpeed(100, 800, 'easeOutCubic');
+
+    if($('#case_open_sound').length > 0 && $('#case_scroll_sound').length > 0){
+
+        $('#volume i').attr('class' ,'fa fa-volume-up');
+        myVid1.volume=0.5;
+        myVid2.volume=0.5;
+
+        if($.cookie('volume') === 'false'){
+            $('#volume i').attr('class', 'fa fa-volume-off');
+            $('#volume').css('opacity', '0.7');
+            myVid1.volume=0;
+            myVid2.volume=0;
+        }
+    }
+
+    $('#volume').click(function(){
+        if($(this).children('i').hasClass('fa-volume-up')){
+            $(this).children('i').attr('class', 'fa fa-volume-off');
+            $(this).css('opacity', '0.7');
+            myVid1.volume=0;
+            myVid2.volume=0;
+            $.cookie('volume', false, { expires: 7});
+        }else{
+            $(this).children('i').attr('class', 'fa fa-volume-up');
+            $(this).css('opacity', '1');
+            myVid1.volume=0.5;
+            myVid2.volume=0.5;
+            $.cookie('volume', true, { expires: 7});
+        }
+    });
+
+    $('#users-trade_url').keypress(function (event) {
+        if (event.which == '13') {
+            event.preventDefault();
+            $('.save-tradelink').click();
+            console.log('submit')
+        }
+    });
+
+    $('#input_add_balance').keypress(function (event) {
+        if (event.which == '13') {
+            event.preventDefault();
+            $('#button_add_balance').click();
+            console.log('submit');
+        }
+    });
+
+
+    $(".modal__trigger").click(function(){
+        var popUp = $(this).data('popupselector');
+        $(popUp).addClass('active');
+    });
+
+    body.on('click', '.modal__close', function() {
+        $(this).closest('.popup-overlay').removeClass('active').removeClass('activate-promo');
+    });
+    $('body ').on('click', '.modal__continue', function(){
+        $(this).closest('.popup-overlay').removeClass('active');
+    });
+
+
+    $('.carousel').slick({
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        adaptiveHeight: true
+
+    });
+
+    $('.hamburger').click(function(e) {
+        if ($('.nav').hasClass('nav--hidden')) {
+            $('.nav').removeClass('nav--hidden')
+            $('.hamburger--open').hide()
+            $('.hamburger--close').show()
+        } else {
+            $('.nav').addClass('nav--hidden')
+            $('.hamburger--close').hide()
+            $('.hamburger--open').show()
+        }
+        e.stopPropagation()
+    })
+
+    $(".scroll__content").mCustomScrollbar({
+        theme:"minimal"
+    });
+    $(".top-drop__content").mCustomScrollbar({
+        theme:"minimal"
+    });
+
+    var dropdownHeader = $('.dropdown__header');
+    var dropdownContent = $('.dropdown__content');
+    dropdownHeader.click(function(){
+        if($(this).hasClass('active')){
+            $(this).next(dropdownContent).removeClass('active');
+            $(this).removeClass('active');
+        }
+        else{
+            $(this).addClass('active');
+            $(this).next(dropdownContent).addClass('active');
+        }
+    });
+    $('.slider').slick({
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false
+                }
+            }
+        ]
+    });
+    var toggle = $('.nav-trigger');
+    var nav = $('.topline__navigation');
+
+    toggle.click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        nav.toggleClass('active');
+        $('.topline__close').click(function () {
+            nav.removeClass('active');
+        });
+        $(document).one('click', function closeMenu (e){
+            if(nav.has(e.target).length === 0){
+                nav.removeClass('active');
+            } else {
+                $(document).one('click', closeMenu);
+            }
+        });
+    })
+    var clipboard = new Clipboard('.promocode__input');
+    clipboard.on('success', function(e) {
+        $('.promocode__tooltip').addClass('active');
+        setTimeout(function(){$('.promocode__tooltip').removeClass('active');}, 3000)
+
+
+    });
+    $(".lang__btn").click(function() {
+        if (!$(".lang__select").hasClass("open")) {
+            $(".lang__select").addClass("open");
+        }else{
+            $(".lang__select").removeClass("open");
+        }
+    });
+    $('.lucky-button-js').click(function() {
+        if (!$(".range-block-box").hasClass("open")) {
+            $(".range-block-box").addClass("open");
+        }
+    });
+    $('.lucky-ok-js').click(function() {
+        $(".range-block-box").removeClass("open");
+    });
+    $(document).mouseup(function(e) {
+        var $target = $(e.target);
+        if ($target.closest(".lang").length === 0) {
+            $(".lang__select").removeClass("open");
+        }
+    });
+
+    if ($("#tabs")[0]) {
+        $("#tabs").tabs();
+    }
+  if ($(".minecraft_chest-container-wrap")[0]) {
+    $('.minecraft_chest-container-wrap').slick({
+      initialSlide: 0,
+      dots: false,
+      accessibility: false,
+      infinite: false,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      autoplay: false,
+      responsive: [{
+        breakpoint: 760,
+        settings: {
+          slidesToShow: 1,
+          autoplay: false,
+          centerMode: true,
+          variableWidth: true,
+          accessibility: false,
+          // nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+          nextArrow: false,
+          // prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+          prevArrow: false,
+          swipe: true,
+          swipeToSlide: true
+
+        }
+      }]
+    });
+  }
+
+  if ($(".luck-plan-container-col")[0]) {
+    $('.luck-plan-container-col').slick({
+      initialSlide: 0,
+      dots: false,
+      accessibility: false,
+      infinite: false,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      autoplay: false,
+      responsive: [{
+        breakpoint: 760,
+        settings: {
+          slidesToShow: 1,
+          autoplay: false,
+          centerMode: true,
+          variableWidth: true,
+          accessibility: false,
+          // nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+          nextArrow: false,
+          // prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+          prevArrow: false,
+          swipe: true,
+          swipeToSlide: true
+
+        }
+      }]
+    });
+  }
+    if ($(".header-item-screenshots")[0]) {
+        $('.header-item-screenshots').slick({
+            initialSlide: 0,
+            dots: false,
+            accessibility: false,
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: false,
+            nextArrow: false,
+            prevArrow: false,
+            //centerMode: true,
+            responsive: [{
+                breakpoint: 560,
+                settings: {
+                    slidesToShow: 2
+
+                }
+            },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    autoplay: false,
+                    centerMode: false,
+                    variableWidth: false,
+                    accessibility: false,
+                    // nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+                    nextArrow: false,
+                    // prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+                    prevArrow: false,
+                    swipe: true,
+                    swipeToSlide: true
+
+                }
+            }]
+        });
+    }
+
+    $('.lottery-tabs-btn').click(function(){
+        if (this.classList.contains('active')) return;
+        $('.lottery-tabs-btn').toggleClass('active')
+        $('.lottery-box-js,.container.lottery').toggleClass('hide')
+    })
+    $("#addMoneyModal .payment-modal").mCustomScrollbar({
+        scrollInertia:1000
+    });
+
+});

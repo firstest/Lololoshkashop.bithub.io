@@ -1,0 +1,1018 @@
+    <!DOCTYPE html>
+    <html lang="ru-RU">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta property="og:url" content="">
+        <meta property="og:title" content="">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="">
+
+        <meta name="csrf-param" content="_csrf-frontend">
+    <meta name="csrf-token" content="0uyBdhHI5G1Ai04iVaK6DN_XN4Qr8Fg_KMa4sjt_Ad-qm6wYe5qoLiL9AXA69flTvedw7EGRdQxxgMDxT0p0uA==">
+        <title>
+            Minecraft + Полный доступ        </title>
+        <link href="../css/font-awesome.min.css@v=1515009537" rel="stylesheet">
+<link href="../assets/b7291bbe/css/jquery.mCustomScrollbar.css@v=1478939405" rel="stylesheet">
+<link href="../assets/b7291bbe/css/styles.css@v=1532005911" rel="stylesheet">
+<script src="../assets/15d928de/jquery.min.js@v=1490036520"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" crossorigin="anonymous" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs="></script>        <script src="../assets/b7291bbe/js/jquery-ui.js"></script>
+        <script src="../assets/b7291bbe/js/jquery.ui.touch-punch.min.js"></script>
+        <link rel="shortcut icon" href="../assets/b7291bbe/img/design/lolfavicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+    
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105754020-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-105754020-1');
+</script>
+
+<script>
+    var socket = io.connect('188.225.72.203:8585', {secure: true});
+</script>
+
+<div class="wrap-withoutfoot">
+<header class="header">
+        <div class="header-wrapper"></div>
+<div class="container clear">
+    <div class="topline">
+        <button class="nav-trigger">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <a href="../index.html" class="topline__logo">
+            <img class="topline__logo-big" src="../assets/b7291bbe/img/design/logo.png" alt="">
+            <img class="topline__logo-small" src="../assets/b7291bbe/img/design/logo-small.png" alt="">
+        </a>
+        <div class="topline__navigation">
+            <nav class="top-navigation">
+                <ul class="top-navigation__ul">
+                    <li>
+    <a href="../lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="../how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="../agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="../contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+                </ul>
+            </nav>
+            <nav class="bottom-navigation">
+                <ul class="bottom-navigation__ul">
+                    <li class="bottom-navigation__li">
+                        <a href="../index.html#tryluck" class="bottom-navigation__link">
+                            <i class="icon icon-dice-wh bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Испытай удачу                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="../index.html#minecraft" class="bottom-navigation__link">
+                            <i class="icon icon-creep bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Minecraft                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="../index.html#catalog" class="bottom-navigation__link">
+                            <i class="icon icon-cube bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Каталог товаров                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button type="button" class="topline__close"></button>
+        </div>
+
+        <div class="topline__account">
+                            <div class="account-login">
+                    <a class="account-login__button" href="../steam/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-steam-symbol account-login__icon"></i>
+                    </a>
+                    <a class="account-login__button" href="../vk/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-vk account-login__icon"></i>
+                    </a>
+                </div>
+                    </div>
+    </div>
+</div>
+            <style>
+    .header-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    header{
+        height: 590px;
+        background-image: url(../assets/b7291bbe/img/design/blackboard-clipart.jpg);
+        background-position: center;
+    }
+    body, .wrap-withoutfoot{
+        background: #f2f3f5;
+    }
+    header{
+        padding-bottom: 25px;
+    }
+
+    .good-section-container{
+        margin-top: 55px;
+    }
+    @media (max-width: 730px){
+        .header-wrapper{
+            height: 422px;
+        }
+        header{
+            height: auto;
+        }
+        .good-section-container {
+            margin-top: 0;
+        }
+    }
+</style>
+<!-- КАРТИНКА ТОВАРА -->
+    <style>
+        header {
+            background: none;
+        }
+        .header-wrapper{
+            height: 590px;
+            background: url(../img/goods/bg/minefullback.jpg) no-repeat center #211f1f;
+            background-size: cover;
+            background-position: center;
+        }
+
+    </style>
+<div class="clear container good-header-container">
+    <div class="item-info-col good-item-info-col">
+        <div class="item-info-col-inner">
+            <a href="../index.html" class="prev-page">
+                Домой            </a>
+            <div class="header-item-title">
+                <b>Minecraft + Полный доступ</b>
+            </div>
+            <div class="item-platform_genere">
+                <div class="item-platform_genere_block">
+                    <i class="other platform-logo"></i>
+                </div>
+                <div class="item-platform_genere_block">
+                    <i class="genre-icon simulator"></i>
+                    <b></b>
+                </div>
+            </div>
+        </div>
+        <div class="buy-item-container">
+            <div class="buy-item-container-inner">
+                <div class="buy-item-info">
+                    <div class="buy-item-title">
+                        <b>Кэшбэк 20&nbsp<span class="rub-sm">Руб</span></b>
+                    </div>
+                    <div class="buy-item-caption">
+                        <p>Собирай кешбэк и покупай крутые игры на халяву! Увеличенный кешбек!!</p>
+                    </div>                        <div class="stock in-stock">
+                            <span>Игра в наличии!</span>
+                        </div>
+                                    </div>
+
+                <div class="buy-item_price">
+                    <b>199&nbsp<span class="rub-sm">Руб</span></b>
+                </div>
+                
+                                    <button type="button" id="buy-good" data-gid="23" class="button btn-red btn-rounded btn-md">
+                        <span>Купить</span>
+                        <i class="icon icon-arrow"></i>
+                    </button>
+                    <div id="div-response"></div>
+                            </div>
+        </div>
+        <!-- ГАЛЕРЕЯ ТОВАРА -->
+            </div>
+
+</div>
+</header>
+<div class="container item-inner clear good-section-container">
+    <div class="item-description-container">
+        <div class="item-title">
+            <b>Описание</b>
+        </div>
+        <div class="item-description">
+            <p>Покупая данный товар Вы моментально получаете лицензионный аккаунт Minecraft (minecraft.net).<br><br>Minecraft — компьютерная инди-игра в жанре песочницы с элементами симулятора выживания и открытым миром, разработанная шведским программистом Маркусом Перссоном, известным также как «Notch» и позже выпускаемая основанной Перссоном компанией Mojang.<br><br>Покупая данный товар вы получаете: <br>⭐ Игровой аккаунт Minecraft <br>⭐ Возможность смены ника на аккаунте <br>⭐ Возможность смены скина на аккаунте <br><br>Преимущества этого товара: <br>⭐ При смерти инвентарь не опустошается! <br>⭐ При входе на сервер нет надписи "Попробуйте через 3 секунды"! <br>⭐ Играть на иностранных лицензионных серверах! <br>⭐ Играть в интересные моды на серверах!<br><br><br>Как изменить НИК: <br>Переходим на сайт <br>Смотрим на строчку Minecraft <br>Возле ника видим кнопку "Change" <br>Вводим свой новый ник.<br>P.s. обратите внимание, что смена ника возможна ОДИН раз в ТРИ месяца.<br><br>Как изменить СКИН: <br>Переходим на сайт <br>Проходим авторизацию с помощью купленных у нас данных <br>Далее в верхнем правом углу нажимаем на Ваш логин <br>Выбираем пункт "PROFILE" <br>Видим строку с выбором скина - выбираем скин. <br>Нажимаем внизу на кнопку "Reset skin"<br><br>Что делать после покупки? <br>Скачать/установить Minecraft<br>Авторизоваться в клиенте Minecraft <br>Играть</p>
+        </div>
+    </div>
+    <div class="item-side-container">
+        <div class="qa-block side-block">
+            <ul class="qa-list">
+                <li>
+                    <a href="../how-to-buy">Как купить игру?</a>
+                </li>
+                <li>
+                    <a class="modal__trigger" data-popupselector="#how_activate">Как активировать купленную игру?</a>
+                </li>
+            </ul>
+        </div>
+
+        
+        <div class="related-items-container side-block">
+            <div class="side-title">
+                <b>Похожие товары</b>
+            </div>
+            <div class="similar-items-box">
+                <!-- game-item -->
+                                <a href="battlefront2" class="game-item-container">
+                                            <div class="game-item-container-image">
+                            <img src="../img/goods/cover/btf212.jpg" alt="">
+                        </div>
+                                        <div class="game-item-container-details">
+                        <div class="catalog-col-details-inner">
+                            <div class="game-item-container-platform">
+                                <i class="icon icon-origin icon-platform"></i>
+                            </div>
+                            <div class="game-item-container-name">
+                                <b>Star Wars: Battlefront II</b>
+                            </div>
+                            <div class="item-price">
+                                <b>199 Руб</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                                <a href="pvz2" class="game-item-container">
+                                            <div class="game-item-container-image">
+                            <img src="../img/goods/cover/pvz212345.jpg" alt="">
+                        </div>
+                                        <div class="game-item-container-details">
+                        <div class="catalog-col-details-inner">
+                            <div class="game-item-container-platform">
+                                <i class="icon icon-origin icon-platform"></i>
+                            </div>
+                            <div class="game-item-container-name">
+                                <b>PvZ Garden Warfare 2</b>
+                            </div>
+                            <div class="item-price">
+                                <b>99 Руб</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                                <a href="playanowerspatelgraunds" class="game-item-container">
+                                            <div class="game-item-container-image">
+                            <img src="../img/goods/cover/pubg123.jpg" alt="">
+                        </div>
+                                        <div class="game-item-container-details">
+                        <div class="catalog-col-details-inner">
+                            <div class="game-item-container-platform">
+                                <i class="icon icon-steam icon-platform"></i>
+                            </div>
+                            <div class="game-item-container-name">
+                                <b>Плей Ановерс Пател граундс</b>
+                            </div>
+                            <div class="item-price">
+                                <b>123456 Руб</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                                <a href="andromeda" class="game-item-container">
+                                            <div class="game-item-container-image">
+                            <img src="../img/goods/cover/origin22akk1.jpg" alt="">
+                        </div>
+                                        <div class="game-item-container-details">
+                        <div class="catalog-col-details-inner">
+                            <div class="game-item-container-platform">
+                                <i class="icon icon-origin icon-platform"></i>
+                            </div>
+                            <div class="game-item-container-name">
+                                <b>Mass Effect: Andromeda</b>
+                            </div>
+                            <div class="item-price">
+                                <b>149 Руб</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                                <!-- game-item.end -->
+            </div>
+        </div>
+    </div>
+    <div class="popup-overlay" id="how_activate">
+        <button class="close-bg modal__close"></button>
+        <div class="modal">
+            <div class="close-cross modal__close"></div>
+            <div class="modal-inner">
+
+                <div class="modal-title">
+                    <b>Как активировать</b>
+                </div>
+
+                <p class="modal-caption">После покупки ваш товар находится в личном кабинете. Вам предоставляется логин и пароль для входа в Minecraft. ᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠ Скачать клиент: minecraft.net/ru-ru/download/ᅠᅠᅠᅠᅠᅠ Личный кабинет: lololoshkashop.net/user</p>
+
+            </div>
+        </div>
+    </div>
+    <!--REVIEW-->
+    
+<div class="item-info_comments-container">
+    <div class="comment-section-wrapper">
+        <div class="comment-title">
+            Комментарии
+            <b class="comments-qt">26</b>
+        </div>
+        <!-- ОТЗЫВЫ -->
+                                    <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c623900/v623900054/11e4b5/xjb2_7pOVqI.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Михаил</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо огромное!                            </div>
+                            <div class="comment-date">
+                                05.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c840026/v840026379/8330f/li0j1p-gzyQ.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Федя</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое! Всё работает!                            </div>
+                            <div class="comment-date">
+                                08.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>adel.nuriev.07</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо огромное! Всё отлично работает!                            </div>
+                            <div class="comment-date">
+                                10.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c846417/v846417812/6fa9b/9AwijXPhaKM.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Huskar-Ne</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое!                            </div>
+                            <div class="comment-date">
+                                14.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c846417/v846417812/6fa9b/9AwijXPhaKM.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Huskar-Ne</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое!                            </div>
+                            <div class="comment-date">
+                                14.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c831108/v831108264/fd989/FsUZ0SDcUF4.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Максим Шевчук</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо, Рома, купил аккаунт, он работает) Да еще и цена ниже в 10 раз) Одним словом- круто, спасибо
+                            </div>
+                            <div class="comment-date">
+                                15.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c638430/v638430006/75d/C5wx9hxjVdQ.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Дмитрий</b>
+                            </div>
+                            <div class="comment-message">
+                                Купил все норм)                            </div>
+                            <div class="comment-date">
+                                18.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c846219/v846219729/80350/bJrCUreiMS4.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Никита</b>
+                            </div>
+                            <div class="comment-message">
+                                Можно как-то поменять почту?                            </div>
+                            <div class="comment-date">
+                                19.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c6/c61353660fa12ba976c4e9c7473670966702fbc9_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>darling</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое!                            </div>
+                            <div class="comment-date">
+                                19.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://sun1-1.userapi.com/c824409/v824409412/142040/BuyGS3T24AE.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Кирилл Добровольский</b>
+                            </div>
+                            <div class="comment-message">
+                                Как forge скачать?                            </div>
+                            <div class="comment-date">
+                                22.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/64/6428d5c74b9597b92b25fecd5df9d484808e8a84_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>why</b>
+                            </div>
+                            <div class="comment-message">
+                                Всё норм. Осталось подождать и проверить не продадут ли его ещё кому                            </div>
+                            <div class="comment-date">
+                                24.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>тостер</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо огромное я купил аккаунт а он не работал,вежливая поддержка и быстрые ответы помогли мне решить проблему
+все заменили                            </div>
+                            <div class="comment-date">
+                                25.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a2/a24c90265f89a98e6fcd218bb773644b1a2bffa4_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>nik.shel.70</b>
+                            </div>
+                            <div class="comment-message">
+                                Как подтвердить почту и сменить её?                            </div>
+                            <div class="comment-date">
+                                26.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>yarchesun</b>
+                            </div>
+                            <div class="comment-message">
+                                Всё круто!,Всё класс!,Спасибо большое!!!Работает как по маслу))                            </div>
+                            <div class="comment-date">
+                                26.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>ultradoodakk</b>
+                            </div>
+                            <div class="comment-message">
+                                А я нубик и не понял как ник сменить))                            </div>
+                            <div class="comment-date">
+                                27.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c830709/v830709767/f2a7b/9IyjbWD5Gok.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Кирилл</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо огромное советую купить,и огромное спасибо тех.поддержке!                            </div>
+                            <div class="comment-date">
+                                30.06.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c845120/v845120339/88718/oP5UTkP4Nv4.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Даня</b>
+                            </div>
+                            <div class="comment-message">
+                                Можно ли как то почту сменить?                            </div>
+                            <div class="comment-date">
+                                01.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c847121/v847121072/9805e/hwJoWrCr6QM.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Александр</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо Лолошка большое купил всё нормально всё есть спасибо!!!                            </div>
+                            <div class="comment-date">
+                                03.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd6b39f0fd888e070ff73111cd380f748b0a01d4_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Juniorjr054csgofast.com</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое!                            </div>
+                            <div class="comment-date">
+                                04.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd6b39f0fd888e070ff73111cd380f748b0a01d4_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Juniorjr054csgofast.com</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо большое!                            </div>
+                            <div class="comment-date">
+                                04.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/49/4933a882c6a4804984b85e9db5473a7400cfe924_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Anonim PoZzitiw4iK</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо, как говорится                            </div>
+                            <div class="comment-date">
+                                04.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Rit_4</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо огромное за игру                            </div>
+                            <div class="comment-date">
+                                05.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c830709/v830709313/3714a/Frms0eYpaF8.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Степан</b>
+                            </div>
+                            <div class="comment-message">
+                                Спасибо                            </div>
+                            <div class="comment-date">
+                                05.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c846019/v846019193/8d10f/d7ROryeQEVU.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Иван</b>
+                            </div>
+                            <div class="comment-message">
+                                Кек, Лол Всё Норм))!!                            </div>
+                            <div class="comment-date">
+                                07.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c845124/v845124585/26e26/aDD3kkwdj8E.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Лера</b>
+                            </div>
+                            <div class="comment-message">
+                                Не понимаю как сменить ник,под скажите пожалуйста                            </div>
+                            <div class="comment-date">
+                                09.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="comment-container">
+                    <div class="comment-container-inner">
+                        <div class="comment-user-image">
+                            <img src="https://pp.userapi.com/c824603/v824603981/13ad13/h12tY3JNZSA.jpg?ava=1" alt="">
+                        </div>
+                        <div class="comment-user-message">
+                            <div class="comment-username">
+                                <b>Данил</b>
+                            </div>
+                            <div class="comment-message">
+                                Купил, теперь играю ! Круто!
+                            </div>
+                            <div class="comment-date">
+                                09.07.2018                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+</div>    <!--/REVIEW-->
+
+</div>
+<div id="div_drop_modal"></div>
+<div id="div-response"></div>    </div>
+
+        <footer class="section">
+    <div class="container clear">
+        <div class="footer-logo">
+            <img src="../assets/b7291bbe/img/design/logo.png" alt="">
+        </div>
+        <nav class="footer-col">
+            <ul class="footer-navigation">
+                <li>
+    <a href="../lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="../how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="../agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="../contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+            </ul>
+            <div class="footer-copyright">
+                Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли. Все закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и марок, логотипы и товарные знаки являются собственностью соответствующих владельцев.            </div>
+        </nav>
+    </div>
+</footer>
+
+<!--<script>
+    $(document).on('input', '#input_add_balance', function () {
+        var inp = $(this), value = inp.val();
+        inp.val(value.replace(/[^\d,.]/g, '').replace(/([,.])[,.]+/g, '$1'));
+    });
+</script>
+-->
+<!-- modal -->
+<div class="popup-overlay" id="addMoneyModal">
+    <button class="close-bg modal__close"></button>
+    <div class="close-cross modal__close"></div>
+    <div class="modal payment-modal">
+        <div class="modal-inner">
+            <p class="payment-modal-title">Выберите удобный способ пополнения баланса</p>
+            <div class="clear">
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Электронные деньги:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMR" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMR">
+                            <span class="radio-payment-img wm"></span>
+                            <div class="radio-payment-text">
+                                <b>Webmoney</b>
+                                <span class="d">WMZ WMR WME</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="QSR" name="payment" value="all" data-pay-system="digi">
+                        <label for="QSR">
+                            <span class="radio-payment-img qiwi"></span>
+                            <div class="radio-payment-text">
+                                <b>Qiwi</b>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="PCR" name="payment" value="all" data-pay-system="digi">
+                        <label for="PCR">
+                            <span class="radio-payment-img yandex"></span>
+                            <div class="radio-payment-text">
+                                <b>Яндекс Деньги</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMX" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMX">
+                            <span class="radio-payment-img bitcoin"></span>
+                            <div class="radio-payment-text">
+                                <b>Bitcoin</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="150" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="150">
+                            <span class="radio-payment-img adv"></span>
+                            <div class="radio-payment-text">
+                                <b>AdvCash</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="114" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="114">
+                            <span class="radio-payment-img payeer"></span>
+                            <div class="radio-payment-text">
+                                <b>Payeer</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Банковские карты:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="liqp" name="payment" value="all" data-pay-system="liqpay">
+                        <label for="liqp">
+                            <span class="radio-payment-img liqpay"></span>
+                            <div class="radio-payment-text">
+                                <b>LiqPay</b>
+                                <span class="d">Приват 24</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="80" name="payment" value="all" data-pay-system="digi">
+                        <label for="80">
+                            <span class="radio-payment-img sber"></span>
+                            <div class="radio-payment-text">
+                                <b>Сбербанк</b>
+                                <span class="d">online</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="79" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="79">
+                            <span class="radio-payment-img alfa"></span>
+                            <div class="radio-payment-text">
+                                <b>Альфа Банк</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="94" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="94">
+                            <span class="radio-payment-img other"></span>
+                            <div class="radio-payment-text">
+                                <b>Другие банки</b>
+                                <span class="d">Россия, Украина</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Мобильные операторы:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MTS" name="payment" value="all" data-pay-system="digi">
+                        <label for="MTS">
+                            <span class="radio-payment-img mts"></span>
+                            <div class="radio-payment-text">
+                                <b>МТС</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="BLN" name="payment" value="all" data-pay-system="digi">
+                        <label for="BLN">
+                            <span class="radio-payment-img bee"></span>
+                            <div class="radio-payment-text">
+                                <b>Билайн</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MGY" name="payment" value="all" data-pay-system="digi">
+                        <label for="MGY">
+                            <span class="radio-payment-img megafon"></span>
+                            <div class="radio-payment-text">
+                                <b>Мегафон</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="TLY" name="payment" value="all" data-pay-system="digi">
+                        <label for="TLY">
+                            <span class="radio-payment-img tele2"></span>
+                            <div class="radio-payment-text">
+                                <b>Теле 2</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment-form">
+            <div class="payment-form-inner">
+                <div class="clear">
+                    <div class="payment-input-col">
+                        <input id="input_add_balance" name="amount" placeholder="Введите сумму" type="number">
+                        <input value="Оплатить" class="btn-red" id="pay" type="submit">
+                    </div>
+
+                    <label class="checkmark_block">
+                        <input name="agreement" id="check-pay" type="checkbox">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Cогласен c <a href="../agreement" target="_blank">пользовательским соглашением</a> </span>
+                    </label>
+                </div>
+                <div id="pay-err"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal.end -->
+
+    <script src="../assets/1d701b84/yii.js@v=1521657413"></script>
+<script src="../js/underscore-min.js@v=1513606356"></script>
+<script src="../js/jquery-ui.custom.min.js@v=1513606356"></script>
+<script src="../js/jquery.mCustomScrollbar.min.js@v=1513606356"></script>
+<script src="../js/jquery.cookie.js@v=1513606356"></script>
+<script src="../js/clipboard.min.js@v=1513606356"></script>
+<script src="../js/slick.min.js@v=1513606356"></script>
+<script src="../assets/b7291bbe/js/jquery.mCustomScrollbar.js@v=1478939405"></script>
+<script src="../assets/b7291bbe/js/common.js@v=1532008664"></script>
+<script src="../assets/b7291bbe/js/my.js@v=1531132592"></script>    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function(){ var widget_id = '8hBERK6w7r';var d=document;var w=window;function l(){
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/geo-widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+    <!-- {/literal} END JIVOSITE CODE -->
+    </body>
+
+    </html>

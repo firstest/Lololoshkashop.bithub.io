@@ -1,0 +1,493 @@
+    <!DOCTYPE html>
+    <html lang="ru-RU">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta property="og:url" content="">
+        <meta property="og:title" content="">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="">
+
+        <meta name="csrf-param" content="_csrf-frontend">
+    <meta name="csrf-token" content="He7HD0KOtgPToopTH-nTfzZTFlqKWDeFHKBv3CjO5jZlmephKNz6QLHUxQFwvpAgVGNRMuA5GrZF5hefXPuTUQ==">
+        <title>
+            Trouble_maker        </title>
+        <link href="css/font-awesome.min.css@v=1515009537" rel="stylesheet">
+<link href="assets/b7291bbe/css/jquery.mCustomScrollbar.css@v=1478939405" rel="stylesheet">
+<link href="assets/b7291bbe/css/styles.css@v=1532005911" rel="stylesheet">
+<script src="assets/15d928de/jquery.min.js@v=1490036520"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" crossorigin="anonymous" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs="></script>        <script src="assets/b7291bbe/js/jquery-ui.js"></script>
+        <script src="assets/b7291bbe/js/jquery.ui.touch-punch.min.js"></script>
+        <link rel="shortcut icon" href="assets/b7291bbe/img/design/lolfavicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+    
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105754020-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-105754020-1');
+</script>
+
+<script>
+    var socket = io.connect('188.225.72.203:8585', {secure: true});
+</script>
+
+<div class="wrap-withoutfoot">
+<header class="header">
+        <div class="header-wrapper"></div>
+<div class="container clear">
+    <div class="topline">
+        <button class="nav-trigger">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <a href="index.html" class="topline__logo">
+            <img class="topline__logo-big" src="assets/b7291bbe/img/design/logo.png" alt="">
+            <img class="topline__logo-small" src="assets/b7291bbe/img/design/logo-small.png" alt="">
+        </a>
+        <div class="topline__navigation">
+            <nav class="top-navigation">
+                <ul class="top-navigation__ul">
+                    <li>
+    <a href="lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+                </ul>
+            </nav>
+            <nav class="bottom-navigation">
+                <ul class="bottom-navigation__ul">
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#tryluck" class="bottom-navigation__link">
+                            <i class="icon icon-dice-wh bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Испытай удачу                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#minecraft" class="bottom-navigation__link">
+                            <i class="icon icon-creep bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Minecraft                            </span>
+                        </a>
+                    </li>
+                    <li class="bottom-navigation__li">
+                        <a href="index.html#catalog" class="bottom-navigation__link">
+                            <i class="icon icon-cube bottom-navigation__icon"></i>
+                            <span class="bottom-navigation__text">
+                                Каталог товаров                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button type="button" class="topline__close"></button>
+        </div>
+
+        <div class="topline__account">
+                            <div class="account-login">
+                    <a class="account-login__button" href="steam/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-steam-symbol account-login__icon"></i>
+                    </a>
+                    <a class="account-login__button" href="vk/sign-in">
+                        <span class="account-login__button-text">
+                            Войти через                         </span>
+                        <i class="fab fa-vk account-login__icon"></i>
+                    </a>
+                </div>
+                    </div>
+    </div>
+</div>
+            </header>
+<style>
+    body, .wrap-withoutfoot{ background: #f2f3f5; }
+    @media (max-width: 767px) {
+        .container-nav {
+            padding: 40px 0 20px;
+            padding-left: 20px;
+        }
+    }
+</style>
+<div class="container m-container" id="profile_me">
+    <div class="container-nav">
+        <a href="index.html" class="prev-page bl-prev">
+            Домой        </a>
+        <nav class="nav-inner">
+            <ul class="header-navigation">
+                <li>
+    <a href="lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container-title user-id-title gr-color">
+        <h2>Профиль Trouble_maker</h2>
+        <div class="user-id">
+            <b>(ID 28974)</b>
+        </div>
+    </div>
+
+    <div class="user-account-container clear">
+        <div class="user-account-profile">
+            <div class="user-account-profile-inner">
+                <div class="user-account-profile-avatar">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e1/e1eec0e20b51611e6f357bcbfcf352c1f479ffcb_full.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="user-account-right">
+            <div class="user-account-history">
+                <div class="m-title">
+                    <b>История покупок:</b>
+                </div>
+
+                <div class="user-account-history-header">
+    <div class="user-account-col">№</div>
+    <div class="user-account-col">Игра</div>
+        <div class="user-account-col">Дата</div>
+</div>
+    <div id="p0" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+            <div class="user-account-history-block">
+            <div class="user-account-col pseudo-circle tb-cell" data-title="№">
+                <b>15728</b>
+            </div>
+            <div class="user-account-col pseudo-circle tb-cell" data-title="Игра">
+                <b>Spore</b>
+            </div>
+                        <div class="user-account-col tb-cell" data-title="Дата">
+                <b>19:10</b>
+                <b>19.07.2018</b>
+            </div>
+        </div>
+            <div class="user-account-history-block">
+            <div class="user-account-col pseudo-circle tb-cell" data-title="№">
+                <b>15726</b>
+            </div>
+            <div class="user-account-col pseudo-circle tb-cell" data-title="Игра">
+                <b>Minecraft + Сайт</b>
+            </div>
+                        <div class="user-account-col tb-cell" data-title="Дата">
+                <b>19:05</b>
+                <b>19.07.2018</b>
+            </div>
+        </div>
+            <div class="user-account-history-block">
+            <div class="user-account-col pseudo-circle tb-cell" data-title="№">
+                <b>15724</b>
+            </div>
+            <div class="user-account-col pseudo-circle tb-cell" data-title="Игра">
+                <b>Minecraft + Полный доступ</b>
+            </div>
+                        <div class="user-account-col tb-cell" data-title="Дата">
+                <b>18:54</b>
+                <b>19.07.2018</b>
+            </div>
+        </div>
+    
+        </div>
+    <div id="div_drop_modal"></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+        <footer class="section">
+    <div class="container clear">
+        <div class="footer-logo">
+            <img src="assets/b7291bbe/img/design/logo.png" alt="">
+        </div>
+        <nav class="footer-col">
+            <ul class="footer-navigation">
+                <li>
+    <a href="lottery">
+        Лотерея
+    </a>
+</li>
+<li>
+    <a href="how-to-buy">
+        Как купить    </a>
+</li>
+<li>
+    <a href="agreement">
+        Соглашение    </a>
+</li>
+<li>
+    <a href="contacts" target="_blank">
+        Контакты    </a>
+</li>
+<li>
+    <a href="https://www.youtube.com/user/MrLololoshka" target="_blank">
+        Youtube канал    </a>
+</li>
+<li>
+    <a href="http://vk.com/lololoshkashop24" target="_blank">
+        Группа ВК    </a>
+</li>
+            </ul>
+            <div class="footer-copyright">
+                Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли. Все закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и марок, логотипы и товарные знаки являются собственностью соответствующих владельцев.            </div>
+        </nav>
+    </div>
+</footer>
+
+<!--<script>
+    $(document).on('input', '#input_add_balance', function () {
+        var inp = $(this), value = inp.val();
+        inp.val(value.replace(/[^\d,.]/g, '').replace(/([,.])[,.]+/g, '$1'));
+    });
+</script>
+-->
+<!-- modal -->
+<div class="popup-overlay" id="addMoneyModal">
+    <button class="close-bg modal__close"></button>
+    <div class="close-cross modal__close"></div>
+    <div class="modal payment-modal">
+        <div class="modal-inner">
+            <p class="payment-modal-title">Выберите удобный способ пополнения баланса</p>
+            <div class="clear">
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Электронные деньги:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMR" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMR">
+                            <span class="radio-payment-img wm"></span>
+                            <div class="radio-payment-text">
+                                <b>Webmoney</b>
+                                <span class="d">WMZ WMR WME</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="QSR" name="payment" value="all" data-pay-system="digi">
+                        <label for="QSR">
+                            <span class="radio-payment-img qiwi"></span>
+                            <div class="radio-payment-text">
+                                <b>Qiwi</b>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="PCR" name="payment" value="all" data-pay-system="digi">
+                        <label for="PCR">
+                            <span class="radio-payment-img yandex"></span>
+                            <div class="radio-payment-text">
+                                <b>Яндекс Деньги</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="WMX" name="payment" value="all" data-pay-system="digi">
+                        <label for="WMX">
+                            <span class="radio-payment-img bitcoin"></span>
+                            <div class="radio-payment-text">
+                                <b>Bitcoin</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="150" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="150">
+                            <span class="radio-payment-img adv"></span>
+                            <div class="radio-payment-text">
+                                <b>AdvCash</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="114" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="114">
+                            <span class="radio-payment-img payeer"></span>
+                            <div class="radio-payment-text">
+                                <b>Payeer</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Банковские карты:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="liqp" name="payment" value="all" data-pay-system="liqpay">
+                        <label for="liqp">
+                            <span class="radio-payment-img liqpay"></span>
+                            <div class="radio-payment-text">
+                                <b>LiqPay</b>
+                                <span class="d">Приват 24</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="80" name="payment" value="all" data-pay-system="digi">
+                        <label for="80">
+                            <span class="radio-payment-img sber"></span>
+                            <div class="radio-payment-text">
+                                <b>Сбербанк</b>
+                                <span class="d">online</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="79" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="79">
+                            <span class="radio-payment-img alfa"></span>
+                            <div class="radio-payment-text">
+                                <b>Альфа Банк</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="94" name="payment" value="all" data-pay-system="freekassa">
+                        <label for="94">
+                            <span class="radio-payment-img other"></span>
+                            <div class="radio-payment-text">
+                                <b>Другие банки</b>
+                                <span class="d">Россия, Украина</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="payment-col">
+                    <div class="modal-caption">
+                        <b>Мобильные операторы:</b>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MTS" name="payment" value="all" data-pay-system="digi">
+                        <label for="MTS">
+                            <span class="radio-payment-img mts"></span>
+                            <div class="radio-payment-text">
+                                <b>МТС</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="BLN" name="payment" value="all" data-pay-system="digi">
+                        <label for="BLN">
+                            <span class="radio-payment-img bee"></span>
+                            <div class="radio-payment-text">
+                                <b>Билайн</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="MGY" name="payment" value="all" data-pay-system="digi">
+                        <label for="MGY">
+                            <span class="radio-payment-img megafon"></span>
+                            <div class="radio-payment-text">
+                                <b>Мегафон</b>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="radio-button payment-radio">
+                        <input type="radio" id="TLY" name="payment" value="all" data-pay-system="digi">
+                        <label for="TLY">
+                            <span class="radio-payment-img tele2"></span>
+                            <div class="radio-payment-text">
+                                <b>Теле 2</b>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment-form">
+            <div class="payment-form-inner">
+                <div class="clear">
+                    <div class="payment-input-col">
+                        <input id="input_add_balance" name="amount" placeholder="Введите сумму" type="number">
+                        <input value="Оплатить" class="btn-red" id="pay" type="submit">
+                    </div>
+
+                    <label class="checkmark_block">
+                        <input name="agreement" id="check-pay" type="checkbox">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Cогласен c <a href="agreement" target="_blank">пользовательским соглашением</a> </span>
+                    </label>
+                </div>
+                <div id="pay-err"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal.end -->
+
+    <script src="assets/1d701b84/yii.js@v=1521657413"></script>
+<script src="assets/74021851/jquery.pjax.js@v=1507803074"></script>
+<script src="js/underscore-min.js@v=1513606356"></script>
+<script src="js/jquery-ui.custom.min.js@v=1513606356"></script>
+<script src="js/jquery.mCustomScrollbar.min.js@v=1513606356"></script>
+<script src="js/jquery.cookie.js@v=1513606356"></script>
+<script src="js/clipboard.min.js@v=1513606356"></script>
+<script src="js/slick.min.js@v=1513606356"></script>
+<script src="assets/b7291bbe/js/jquery.mCustomScrollbar.js@v=1478939405"></script>
+<script src="assets/b7291bbe/js/common.js@v=1532008664"></script>
+<script src="assets/b7291bbe/js/my.js@v=1531132592"></script>
+<script>jQuery(function ($) {
+jQuery(document).pjax("#p0 a", {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#p0"});
+jQuery(document).on("submit", "#p0 form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#p0"});});
+});</script>    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function(){ var widget_id = '8hBERK6w7r';var d=document;var w=window;function l(){
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/geo-widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+    <!-- {/literal} END JIVOSITE CODE -->
+    </body>
+
+    </html>

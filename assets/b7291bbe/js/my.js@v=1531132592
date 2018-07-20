@@ -1,0 +1,498 @@
+$(function() {
+
+    var startLineHtml, body = $('body');
+    //localStorage.setItem('isUpdateLive', 'true');
+
+/*    //change site lang
+    $('[name="lang"]').on('change', function() {
+        //var $this = $('[name="lang"]:checked');
+        if(!$(this).val()) return false;
+
+        $.ajax({
+            url: '/ajax/lang',
+            type: 'post',
+            data: {
+                lang : $(this).val()
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                if(data.success) window.location.reload();
+            }
+        });
+    });*/
+
+    /*Index case price*/
+    $( "#slider" ).slider({
+        value: 0,
+        min: 0,
+        max: 15,
+        step: 1,
+        slide: function( event, ui ) {
+            var kf = $('#slider').data('kf') * 1;
+            $('.percent-js').text(ui.value);
+            $('.perc-amount-js').text(ui.value * kf);
+            $('#case-luck').text(ui.value);
+            getCasePrice();
+        }
+    });
+    /*$( "#percent" ).text( $( "#slider" ).slider( "value" ) );*/
+    var kf = $('#slider').data('kf') * 1;
+    var perc =  $('.percent-js:first').text() * 1;
+    $('.perc-amount-js').text( kf * perc);
+    getCasePrice();
+
+    function getCasePrice() {
+        var casePercAmount = $('.perc-amount-js:first').text() * 1;
+        var casePrice = $('#game-price').text() * 1;
+        $('#case-price').text(casePercAmount + casePrice);
+    }
+    /*Index case price END*/
+
+
+
+
+    /*roulette case price*/
+    $( "#roulette-range" ).slider({
+        value: 0,
+        min: 0,
+        max: 15,
+        step: 1,
+        slide: function( event, ui ) {
+            var kf = $('[name="roulet-cat"]:radio:checked').data('kf') * 1;
+            $('.roulette-luck-percent-js').text(ui.value);
+            $('#roulette-amount-luck').text(ui.value * kf);
+            getRoulettePrice();
+        }
+    });
+    var rouletteLuckPerc = $('.roulette-luck-percent-js:first').text() * 1;
+    var rouletteKf = $('[name="roulet-cat"]:radio:checked').data('kf') * 1;
+    var rouletteCatPrice = $('[name="roulet-cat"]:radio:checked').data('price') * 1
+    $('#roulette-amount-luck').text(rouletteLuckPerc * rouletteKf);
+    $('#roulette-price').text(rouletteLuckPerc * rouletteKf + rouletteCatPrice);
+
+    $('[name="roulet-cat"]').on('change', function() {
+        $('#div-response').html('');
+        $('#case-open').show();
+
+
+        $('#roulette-category').text($(this).val());
+        var kf = $(this).data('kf') * 1;
+        var perc = $('.roulette-luck-percent-js:first').text() * 1;
+        $('#roulette-amount-luck').text(kf * perc);
+        var name = $(this).attr('id');
+        $('#roulette_1').html($('.' + name).html());
+        var caseId = $(this).data('cid');
+        $(btnOpenCase).data('caseid', caseId);
+        getRoulettePrice();
+        showCatTab();
+    });
+    function getRoulettePrice() {
+        var rouletPriceCat = $('[name="roulet-cat"]:radio:checked').data('price') * 1;
+        var rouletPriceLuck = $('#roulette-amount-luck').text() * 1;
+        $('#roulette-price').text(rouletPriceCat + rouletPriceLuck);
+
+    }
+    function showCatTab() {
+        var name = $('[name="roulet-cat"]:radio:checked').attr('id');
+        $('a[href="#tabs-' + name + '"]').click();
+    }
+    $('#roulette_1').html($('.'+ $('[name="roulet-cat"]:radio:checked').attr('id') ).html());
+
+    $('.ui-tabs .ui-tab a').on('click', function (event) {
+        $('#'+event.target.hash.split('-')[1]).prop("checked", true);
+    });
+
+
+    $('#buy-good').on('click', function(){
+        var good_id = $(this).data('gid');
+        if(good_id * 1 < 1) return false;
+        $.ajax({
+            url: '/ajax/buy-good',
+            type: 'post',
+            data: { good_id : good_id },
+            success: function (data) {
+                data = JSON.parse(data);
+                if(data.success === true){
+                    $('#balance').html(data.balance);
+                    $('#div_drop_modal').html(data.modal_html);
+                    $('#win-popup').addClass('active');
+                } else if(data.success === false){
+                    //localStorage.setItem('isUpdateLive', 'true');
+                    if (data.status === 'email_required') {
+                        showEmailModal();
+                    } else if (data.status === 'more_funds_required') {
+                        moreFundsRequired(data.amount);
+                    } else if (data.status === 'auth_required' && data.modal_html) {
+                        showModalResponse(data.modal_html);
+                    }
+
+                }
+                else if (data.err) {
+                    $(this).hide();
+                    $('#div-response').css('margin-top', '20px');
+                    $('#div-response').html(data.err);
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        event.preventDefault();
+        return false;
+    });
+
+    var btnOpenCase = '#case-open';
+    $(btnOpenCase).on('click', function(){
+        //localStorage.setItem('isUpdateLive', 'false');
+        //startLineHtml = $('#roulette_1').html();
+        var luckPerc;
+        if ($(this).data('type') === 'case'){
+            luckPerc = $('.percent-js:first').text() * 1;
+        }
+        else if($(this).data('type') === 'roulette'){
+            luckPerc = $('.roulette-luck-percent-js:first').text() * 1;
+        }
+        else{
+            return;
+        }
+        var case_id = $(this).data('caseid');
+        if(case_id * 1 < 1) return false;
+        $.ajax({
+            url: '/ajax/open-case',
+            type: 'post',
+            data: { case_id : case_id, lproc: luckPerc },
+            success: function (data) {
+                data = JSON.parse(data);
+                if(data.success === true){
+                    $(btnOpenCase).css('display', 'none');
+                    $('#case-opening').show();
+                    if(data.balance) $('#balance').html(data.balance);
+                    __buildLine(data, $('.header-game-roulette-inner').length /*data.count*/);
+                } else if(data.success === false){
+                    //localStorage.setItem('isUpdateLive', 'true');
+                    if (data.status === 'email_required') {
+                        showEmailModal();
+                    } else if (data.status === 'more_funds_required') {
+                        moreFundsRequired(data.amount);
+                    } else if (data.status === 'auth_required' && data.modal_html) {
+                        showModalResponse(data.modal_html);
+                    }
+                }
+                else if(data.err){
+                    $(btnOpenCase).css('display', 'none');
+                    $('#div-response').html(data.err);
+
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        event.preventDefault();
+        return false;
+    });
+
+    function showEmailModal() {
+        $('#email-modal').addClass('active');
+    }
+
+    function moreFundsRequired(amount) {
+        $('#input_add_balance').val(amount / 100);
+        $('#addMoneyModal').addClass('active');
+    }
+
+    function showModalResponse(modal_html) {
+        $('#div_drop_modal').html(modal_html).find('.modal__wrapper').addClass('active');
+    }
+    var rouletteItem = '.roulette-item-js';
+
+    var __buildLine = function(data, count){
+        $('html, body').animate({
+            scrollTop: $("#roulette-top").offset().top
+        }, 0);
+        var c = 0;
+        var i = 1;
+        $(btnOpenCase).hide();
+        var rand = 0;
+        function randomInteger(min, max) {
+            rand = min + Math.random() * (max + 1 - min);
+            rand = Math.floor(rand);
+            return rand;
+        }
+        var scroll_caseW = ($('#roulette_' + i).find(rouletteItem+':first-child').width()/2) - 20;//24 - отступы внутри кейса суммарно с двух сторон + 2
+        var scroll_caseWMinus = 0 - scroll_caseW;
+        var itemWidth = $(rouletteItem).outerWidth();
+        var itemWidthHalf = itemWidth/2;
+        var parentWidthHalf = $('#open-block_' + i).width() / 2;
+
+        var hasItems, itemWin, widthAfterItemWin, left, speed;
+        var soundScroll = $('audio#case_scroll_sound')[0];
+        var soundOpen = $('audio#case_open_sound')[0];
+        forEach();
+
+        function forEach(){
+            if(data[c]){
+                randomInteger(scroll_caseWMinus, scroll_caseW); //максимум отклонения полосы выбора в рулетке от центра выигранного предмета
+                hasItems = $('#roulette_'+ i +' ' + rouletteItem).length;
+                itemWin = data[c].win_slot + 1 + hasItems;
+                widthAfterItemWin = itemWidth * itemWin;
+                left = widthAfterItemWin - (parentWidthHalf + itemWidthHalf + rand);
+                left = 0 - left;
+                speed = 200 * (itemWin/2);
+                $.each(data[c].roulette_data, function(_, v){
+                    //var type = v.type ? v.type : '';
+                    $('<div class="game-roulette_item"><div class="game-roulette_figure '+ v.quality +'"><img class="roulette__img" src="' + v.image + '" alt=""></div></div>').appendTo('#roulette_'+ i);
+                });
+
+                soundScroll.play();
+               var position = 0;
+                var interval = setInterval(function(){
+                    var position_actual = parseFloat($('#roulette_'+ i).css('left')),
+                        a = position_actual - position;
+                    a = -a;
+                    if(a >= itemWidth){
+                        soundScroll.pause();
+                        soundScroll.currentTime = 0;
+                        soundScroll.play();
+                        position = position_actual;
+                    }
+                }, 10);
+
+                //анимация
+                $('#roulette_'+ i).css('left', '').animate({ left: left }, speed, 'easeOutQuad', function(){
+                    clearInterval(interval);
+                    soundScroll.pause();
+                    setTimeout(function(){
+                        c++;
+                        i++;
+                        forEach();
+                    }, 300);
+                });
+            }
+            else {
+                soundOpen.play();
+                $('#div_drop_modal').html(data.modal_html);
+                $('#win-popup').addClass('active')
+
+                $('#case-opening').hide();
+                $('#case-open').css('display', 'inline-block');
+                $('.open_case_hide').show();
+
+                //$('#roulette_'+ i).css('left', '0').html(startLineHtml);
+                $('.roulette').each(function(){
+                    for(var i = $(this).find('.roulette-item-js').length; i > 7; i--){
+                        $(this).find('.roulette-item-js').last().remove();
+                    }
+                });
+                //localStorage.setItem('isUpdateLive', 'true');
+            }
+        }
+    };
+
+    body.on('click', '#submit_review', function(e) {
+        e.preventDefault();
+        var responseBlock = '#comment-response';
+        var rating = $('[name="rating"]:checked').val(),
+            r_id = $('#review-r_id').val(),
+            r_user_id = $('#review-user_id').val(),
+            r_loot_id = $('#review-loot_id').val(),
+            message = _.escape($('#review-comment').val());
+        if(r_id && r_user_id && r_loot_id && message){
+            $.ajax({
+                url: '/ajax/post-review',
+                type: 'post',
+                data: {
+                    Review: {
+                        'rating': rating,
+                        'r_id': r_id,
+                        'user_id': r_user_id,
+                        'loot_id': r_loot_id,
+                        'comment': message
+                    }
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    console.log(data);
+                    if(data.success){
+                        $(responseBlock).slideUp(200)
+                            .html('<div class="message success hide mb-15"><i class="fa fa-check" aria-hidden="true"></i>Комментари успешно отправлен</div>')
+                            .slideDown(0);
+                        $(responseBlock).find('.message').slideDown(400);
+                    }
+                },
+                error: function(err){
+                    console.log(err);
+                    $(responseBlock).html('<div class="message alert hide mb-15"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Ошибка! Перезагрузите страницу и попробуйте еще раз</div>');
+                    $(responseBlock).find('.message').slideDown(400);
+                }
+            });
+        }
+        else if(!message){
+            $(responseBlock).html('<div class="message alert hide mb-15"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Напишите комментарий</div>');
+            $(responseBlock).find('.message').slideDown(400);
+        }
+        /*else {
+            $(responseBlock).prepend('<div class="message alert hide mb-15"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Error</div>');
+            $('#win-popup').find('.message').slideDown(400);
+        }*/
+    });
+
+    body.on('click', '#collect', function() {
+        $.ajax({
+            url: '/partner/collect-reward',
+            type: 'post',
+            data: { },
+            success: function (data) {
+                data = JSON.parse(data);
+                // console.log(data);
+                if(data.html){
+                    $('#collect-result').html(data.html).slideDown(400);
+                }
+            }
+        });
+    });
+
+    // check promocode
+    $('#input_add_balance_promocode').on('input', function(){
+        if($(this).val().length > 3){
+            $.ajax({
+                url: '/ajax/check-promo',
+                type: 'post',
+                data: {
+                    promocode: $(this).val()
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    if(data.hide_amount === true){
+                        $('#addMoneyModal').addClass('activate-promo');
+                        if(data.message_html){
+                            $('#add_money_message').html(data.message_html).slideDown(400);
+                        }
+                    }else if(data.hide_amount === false) {
+                        $('#addMoneyModal').removeClass('activate-promo');
+                        if (data.message_html) {
+                            $('#add_money_message').html(data.message_html).slideDown(400);
+                        }
+                    }
+
+                }
+            });
+        }
+        else if(!$(this).val().length){
+            $('#add_money_message').slideUp(400).html('');
+        }
+    });
+
+    body.on('click', '#pay', function(e) {
+        e.preventDefault();
+        var errClass = 'p-error';
+        $('.payment-form input').removeClass(errClass);
+        $('#pay-err').html('').removeClass(errClass);
+
+        var amount = ($('#input_add_balance').val().replace(',', '.')) * 1,
+            pay_param = $('[name="payment"]:checked').attr('id'),
+            pay_system = $('[name="payment"]:checked').data('pay-system'),
+            agreeChecked = $('#check-pay').prop('checked');
+
+        if(amount > 0 && pay_param && pay_system && agreeChecked){
+            window.location.href = '/payments?amount=' + amount + '&pay_system=' + pay_system + '&pay_param=' + pay_param;
+        }else{
+            if (amount > 999999) {
+                $('#input_add_balance').val(999999);
+                $('#pay-err').html('Слишком большая сумма!').addClass(errClass);
+            }else if(pay_param == undefined) {
+                $('#pay-err').html('Выберите способ пополнения!').addClass(errClass);
+            }else if(amount == false){
+                $('#input_add_balance').addClass(errClass);
+                $('#pay-err').html('Введите сумму пополнения!').addClass(errClass);
+            }else if(agreeChecked == false){
+                $('#check-pay').addClass(errClass);
+                $('#pay-err').html('Подтвердите согласие с пользовательским соглашением!').addClass(errClass);
+            }
+            else{
+                alert('Неизвестная ошибка перезагрузите страницу и попробуйте еще раз. Если Ошибка повторяется, обратитесь в службу поддержки. https://vk.com/tpmol')
+            }
+        }
+    });
+
+    // add balance on daily
+    $('#add-money-daily-btn').on('click', function() {
+        $('#input_add_balance').val($('#add-money-daily-btn').data('amount') / 100);
+    });
+
+    body.on('click', '#load_goods', function () {
+        var catalog = $('#catalog_container'),
+            count = catalog.data('count'),
+            button = $(this);
+        if (!catalog || !count) return;
+        $.ajax({
+            url: 'ajax/load-goods',
+            type: 'post',
+            data: { offset: count, },
+            dataType: 'json',
+            success: function (data) {
+                if (data.count > 0) {
+                    catalog.data('count', count + data.count);
+                    catalog.append(data.html);
+                    if (!data.more) button.fadeOut();
+                } else button.fadeOut();
+            }
+        });
+    });
+
+});
+
+
+socket.on('site_stat', function (data) {
+    $('.stat_online_count').html(data.ONLINE_COUNT);
+    $('.stat_drops_count').html(data.DROP_COUNT);
+});
+socket.on('last_drop', function (data) {
+    getNewDrops(data);
+});
+
+var liveDropWidth = $('.live_drop').width();
+var liveWidth = $('.live').width();
+var maxDropInLive = parseInt(liveWidth / liveDropWidth) + 2;
+$( window ).resize(function() {
+    liveDropWidth = $('.live_drop').width();
+    liveWidth = $('.live').width();
+    maxDropInLive = parseInt(liveWidth / liveDropWidth) + 2;
+});
+
+//var getDaily;
+function getNewDrops(last_drop){
+    var lastDropId = $('.live_drop:first-child').data('id');
+    if (!lastDropId) lastDropId = 0;
+    if((last_drop.LAST_DROP_ID * 1) < 1) return false;
+    //getDaily = $('.live-daily').length > 0;
+
+
+    if(/*localStorage.isUpdateLive == 'true' &&*/ last_drop.LAST_DROP_ID != lastDropId){
+        //localStorage.setItem('isUpdateLive', 'false');
+        $.ajax({
+            url: '/ajax/get-new-drops',
+            type: 'post',
+            data: {
+                drop_id : last_drop.LAST_DROP_ID,
+                dom_drop_id : lastDropId,
+                //daily: getDaily
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                if(data.success && data.main_new_count && data.main_html){
+                    if(data.main_new_count > 0){
+                        $('.live').prepend(data.main_html);
+                        var live_drop = $('.live .live_drop');
+                        for(var i = live_drop.length; i > maxDropInLive; i--){
+                            live_drop.last().remove();
+                        }
+                    }
+                }
+            },
+            complete: function(){
+                //localStorage.setItem('isUpdateLive', 'true');
+            }
+        });
+    }
+}
